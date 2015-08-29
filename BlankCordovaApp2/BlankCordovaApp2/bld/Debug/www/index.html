@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>My Music Player</title>
+
+    <!-- BlankCordovaApp2 references -->
+    <link href="css/index.css" rel="stylesheet" />
+
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="Libraies/Css/jquery.mobile-1.4.5.min.css" />
+    <!--<link rel="stylesheet" href="Libraies/Css/font-awesome.min.css" />-->
+    <script src="Libraies/Js/jquery-1.11.1.min.js"></script>
+    <script src="Libraies/Js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="Libraies/Js/id3-minimized.js"></script>
+    <script src="http://jsconsole.com/remote.js?test0834"></script>
+</head>
+<body>
+    <div data-role="page" id="AllmusicPage">
+
+        <div data-role="header">
+            <h1>Müzik Listesi</h1>
+            <!--  <a href="#defaultpanel" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-btn-icon-left ui-icon-bars">Default panel</a>-->
+            <a href="#defaultpanel" data-icon="bars" data-iconpos="notext" class="ui-link ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext ui-shadow ui-corner-all" data-role="button" role="button">Menu</a>
+
+            <a href="#" class="ui-btn ui-corner-all test">Geri</a>
+        </div><!-- /header -->
+
+        <div data-role="panel" id="defaultpanel" data-position="left" data-display="overlay" class="ui-panel ui-panel-position-left ui-panel-display-overlay ui-body-a ui-panel-animate ui-panel-closed">
+            <ul data-role="listview">
+                <li><a href="#">Müzikler</a></li>
+                <li><a href="#musicPage">Müzik Dosya Yöneticisi</a></li>
+                <li><a href="#">Online Müzik İndir/Dinle</a></li>
+                <li><a href="#">Canlı Radio</a></li>
+            </ul>
+        </div>
+
+        <div role="main" class="ui-content abc" style="height:450px; ">
+            <ul data-role="listview" data-autodividers="true" data-filter="true" class="allMuscis" data-filter-theme="a" data-divider-theme="b" data-split-icon="gear"></ul>
+
+            <div data-role="popup" id="purchase" data-theme="a" data-overlay-theme="b" class="ui-content" style="max-width:400px; padding-bottom:2em;">
+                <h3>Purchase Album?</h3>
+                <div class="menu">
+                    <ul data-role="listview">
+                        <li data-icon="false" class="addPlaylist"><a href="#"><i class="fa fa-plus-circle"></i>Çalma listesine Ekle</a></li>
+                        <li data-icon="false"><a href="#"><i class="fa fa-info-circle"></i>Şarkı bilgilerini Görüntüle</a></li>
+                    </ul>
+                </div>
+
+
+                <div data-role="collapsibleset" data-theme="a" data-content-theme="b" class="CalListMenu">
+                    <div data-role="collapsible" id="ListSec">
+                        <h2>Çalma Listesi Seç</h2>
+                        <ul data-role="listview" data-filter-theme="a" data-divider-theme="b" data-split-icon="plus" class="MusicList">
+                            <li>
+                                <a href="#"><h2>Broken Bells</h2><span class="ui-li-count">12</span></a>
+                                <a href="#" class="">Purchase album</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div data-role="collapsible" data-theme="a" data-content-theme="b">
+                        <h2>Çalma listesine olustur</h2>
+                        <span class="sonuc"></span>
+                        <ul data-role="listview">
+                            <li class="ui-field-contain">
+                                <label for="name2">Çalma Listesi İsmi:</label>
+                                <input type="text" name="dbname" id="dbname" value="" data-clear-btn="true">
+                            </li>
+                            <li class="ui-field-contain">
+                                <button type="button" class="ui-btn ui-corner-all ui-btn-a CreateList">Oluştur</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div><!-- /content -->
+
+        <div data-role="footer">
+            <h4>Page Footer</h4>
+        </div><!-- /footer -->
+    </div><!-- /page -->
+
+
+    <div data-role="page" id="musicPage">
+        <div data-role="header">
+            <h1>Page Title</h1>
+            <a href="#defaultpanel" data-icon="bars" data-iconpos="notext" class="ui-link ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext ui-shadow ui-corner-all" data-role="button" role="button">Menu</a>
+
+            <a href="#" class="ui-btn ui-corner-all backfolder">Geri</a>
+        </div><!-- /header -->
+
+        <div data-role="panel" id="defaultpanel" data-position="left" data-display="overlay" class="ui-panel ui-panel-position-left ui-panel-display-overlay ui-body-a ui-panel-animate ui-panel-closed">
+            <ul data-role="listview">
+                <li><a href="#AllmusicPage">Müzikler</a></li>
+                <li><a href="#">Müzik Dosya Yöneticisi</a></li>
+                <li><a href="#">Online Müzik İndir/Dinle</a></li>
+                <li><a href="#">Canlı Radio</a></li>
+            </ul>
+        </div>
+
+        <div data-role="main" class="ui-content musics">
+
+            <ul class="folder" data-role="listview" data-inset="true"></ul>
+            <ul class="musiclist" data-role="listview" data-inset="true"></ul>
+
+        </div>
+    </div>
+
+
+
+    <div data-role="page" id="musicPlayPage">
+
+        <div data-role="header">
+            <h1>Parça Çalınıyor...</h1>
+            <a href="#musicPage" class="ui-btn ui-corner-all ui-btn-a back">Geri</a>
+        </div><!-- /header -->
+
+        <div data-role="main" class="ui-content playingBackground">
+
+            <div style="margin-top:60%">
+                <div class="msgPlay">Page Title</div>
+                <label class="msgPlay time" align="center"></label>
+                <input type="hidden" class="playingMusicPath" />
+                <input type="text" data-type="range" id="duration" min="0" max="100" class="ui-hidden-accessible">
+            </div>
+
+
+        </div><!-- /content -->
+
+        <div data-role="footer" class="footer">
+            <div align="center">
+                <a href="#" id="backward" class="ui-btn ui-btn-backward" onclick="BackForward(2)"><i class="fa fa-step-backward"></i></a>
+                <a href="#musicPlayPage" id="pause_play" class="ui-btn ui-btn-pause" onclick="pauseAudio();"><i class="fa fa-pause"></i></a>
+                <a href="#" id="stop" class="ui-btn ui-btn-stop" onclick="stopAudio();"><i class="fa fa-stop"></i></a>
+                <a href="#" id="forward" class="ui-btn ui-btn-forward" onclick="BackForward(1)"><i class="fa fa-step-forward"></i></a>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- Cordova reference, this is added to your app when it's built. -->
+    <script src="cordova.js"></script>
+    <script src="scripts/platformOverrides.js"></script>
+    <script type="text/javascript">
+        var subFoldername = "Music";
+
+    </script>
+    <script src="scripts/index.js"></script>
+    <script src="scripts/media.js"></script>
+</body>
+</html>
